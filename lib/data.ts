@@ -34,6 +34,10 @@ const data = {
       name: 'Help',
       href: '/page/help',
     },
+    {
+      name: 'Help2',
+      href: '/page/help',
+    },
   ],
 }
 export default data

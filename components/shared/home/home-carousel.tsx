@@ -20,7 +20,7 @@ export function HomeCarousel({
   items: {
     title: string
     url: string
-    images: string
+    image: string
     buttonCaption: string
   }[]
 }) {
@@ -42,7 +42,7 @@ export function HomeCarousel({
             <Link href={item.url}>
               <div className='flex aspect-[16/6] items-center justify-center p-6 relative -m-1'>
                 <Image
-                  src={item.images}
+                  src={item.image}
                   alt={item.title}
                   fill
                   className='object-cover'

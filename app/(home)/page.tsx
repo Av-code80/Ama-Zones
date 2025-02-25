@@ -11,7 +11,7 @@ export default async function Page() {
   const newArrivals = await getProductsForCard({
     tag: 'new-arrival',
   })
-  const featureds = await getProductsForCard({
+  const features = await getProductsForCard({
     tag: 'featured',
   })
   const bestSellers = await getProductsForCard({
@@ -49,7 +49,7 @@ export default async function Page() {
     },
     {
       title: 'Featured Products',
-      items: featureds,
+      items: features,
       link: {
         text: 'Shop Now',
         href: '/search?tag=new-arrival',

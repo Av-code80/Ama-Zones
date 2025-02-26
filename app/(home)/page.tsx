@@ -62,6 +62,7 @@ export default async function Page() {
   ]
 
   const todaysDeals = await getProductsByTag({ tag: 'todays-deal' })
+  const bestSellingProducts = await getProductsByTag({ tag: 'best-seller' })
 
   return (
     <>
@@ -70,7 +71,20 @@ export default async function Page() {
         <HomeCard cards={cards} />
         <Card className='w-full rounded-none'>
           <CardContent className='p-4 items-center gap-3'>
-            <ProductSlider title={"Today's Deals"} products={todaysDeals} />
+            <ProductSlider
+              title={"Today's Deals"}
+              products={todaysDeals}
+              hideDetails={false}
+            />
+          </CardContent>
+        </Card>
+        <Card className='w-full rounded-none'>
+          <CardContent className='p-4 items-center gap-3'>
+            <ProductSlider
+              title={'Best Selling Products'}
+              products={bestSellingProducts}
+              hideDetails={true}
+            />
           </CardContent>
         </Card>
       </div>

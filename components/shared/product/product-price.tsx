@@ -15,7 +15,7 @@ const ProductPrice = ({
   forListing?: boolean
   plain?: boolean
 }) => {
-  const discountPercent = Math.round(100 - (price / listPrice) * 500)
+  const discountPercent = Math.round(100 - (price / listPrice) * 100)
   const stringValue = price.toString()
   const [intValue, floatValue] = stringValue.includes('.')
     ? stringValue.split('.')
@@ -56,7 +56,7 @@ const ProductPrice = ({
   ) : (
     <div className=''>
       <div className='flex justify-center gap-3'>
-        <div className='text-3xl text-orange-700'>-{discountPercent}%</div>
+        <div className='text-3xl text-orange-700'>{discountPercent}%</div>
         <div className={cn('text-3xl', className)}>
           <span className='text-xs align-super'>$</span>
           {intValue}

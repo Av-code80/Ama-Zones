@@ -18,12 +18,7 @@ export default async function Header() {
               href='/'
               className='flex items-center header-button font-extrabold text-2xl m-1 '
             >
-              <Image
-                src='icons/logo.svg'
-                width={40}
-                height={40}
-                alt={`${APP_NAME} logo`}
-              />
+              <Image src='/icons/logo.svg' width={40} height={40} alt='Logo' />
               {APP_NAME}
             </Link>
           </div>

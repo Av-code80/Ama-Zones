@@ -1330,5 +1330,4 @@ We also provide helpful resources such as order tracking, product guides, and FA
     },
   ],
 }
-
 export default data

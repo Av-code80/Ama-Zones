@@ -69,6 +69,7 @@ export const formatError = (error: any): string => {
       : JSON.stringify(error.message)
   }
 }
+<<<<<<< HEAD
 
 export function calculateFutureDate(days: number) {
   const currentDate = new Date()
@@ -141,3 +142,5 @@ export const formatDateTime = (dateString: Date) => {
     timeOnly: formattedTime,
   }
 }
+=======
+>>>>>>> 5fd9966... feat: :sparkles: Implement signup feature in menu-header

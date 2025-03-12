@@ -142,5 +142,3 @@ export const formatDateTime = (dateString: Date) => {
     timeOnly: formattedTime,
   }
 }
-=======
->>>>>>> 5fd9966... feat: :sparkles: Implement signup feature in menu-header

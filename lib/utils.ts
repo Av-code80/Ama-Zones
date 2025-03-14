@@ -69,7 +69,6 @@ export const formatError = (error: any): string => {
       : JSON.stringify(error.message)
   }
 }
-<<<<<<< HEAD
 
 export function calculateFutureDate(days: number) {
   const currentDate = new Date()

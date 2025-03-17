@@ -42,6 +42,8 @@ import {
   AVAILABLE_PAYMENT_METHODS,
   DEFAULT_PAYMENT_METHOD,
 } from '@/lib/constants'
+import { createOrder } from '@/lib/actions/order.actions'
+import { toast } from 'sonner'
 
 const shippingAddressDefaultValues =
   process.env.NODE_ENV === 'development'
@@ -64,7 +66,7 @@ const shippingAddressDefaultValues =
         country: '',
       }
 
-const CheckoutForm = () => {
+export const CheckoutForm = () => {
   const router = useRouter()
 
   const {
@@ -82,6 +84,7 @@ const CheckoutForm = () => {
     setPaymentMethod,
     updateItem,
     removeItem,
+    clearCart,
     setDeliveryDateIndex,
   } = useCartStore()
 
@@ -114,7 +117,26 @@ const CheckoutForm = () => {
     useState<boolean>(false)
 
   const handlePlaceOrder = async () => {
-    // TODO: place order
+    const res = await createOrder({
+      items,
+      shippingAddress,
+      expectedDeliveryDate: calculateFutureDate(
+        AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].daysToDeliver
+      ),
+      deliveryDateIndex,
+      paymentMethod,
+      itemsPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice,
+    })
+    if (!res.success) {
+      toast.error(res.message)
+    } else {
+      toast.success(res.message)
+      clearCart()
+      router.push(`/checkout/${res.data?.orderId}`)
+    }
   }
   const handleSelectPaymentMethod = () => {
     setIsAddressSelected(true)
@@ -123,6 +145,7 @@ const CheckoutForm = () => {
   const handleSelectShippingAddress = () => {
     shippingAddressForm.handleSubmit(onSubmitShippingAddress)()
   }
+
   const CheckoutSummary = () => (
     <Card>
       <CardContent className='p-4'>
@@ -211,7 +234,6 @@ const CheckoutForm = () => {
       </CardContent>
     </Card>
   )
-
   return (
     <main className='max-w-6xl mx-auto highlight-link'>
       <div className='grid md:grid-cols-4 gap-6'>
@@ -686,4 +708,3 @@ const CheckoutForm = () => {
     </main>
   )
 }
-export default CheckoutForm

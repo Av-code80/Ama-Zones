@@ -132,6 +132,7 @@ const useCartStore = create(
         set({
           cart: {
             ...get().cart,
+            shippingAddress,
             ...(await calcDeliveryDateAndPrice({
               items,
               shippingAddress,

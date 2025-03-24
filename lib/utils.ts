@@ -6,8 +6,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const formatNumberWithDecimal = (num: number): string => {
-  const [int, decimal] = num.toString().split('.')
-  return decimal ? `${int}.${decimal.slice(0, 2)}` : int
+  const rounded = round2(num)
+  return rounded.toFixed(2)
 }
 
 export const toSlug = (text: string): string => {
@@ -140,4 +140,8 @@ export const formatDateTime = (dateString: Date) => {
     dateOnly: formattedDate,
     timeOnly: formattedTime,
   }
+}
+
+export function formatId(id: string) {
+  return `..${id.substring(id.length - 6)}`
 }

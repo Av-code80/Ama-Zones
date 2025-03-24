@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { formatNumberWithDecimal } from './utils'
 
 // Common
 const MongoId = z
@@ -10,7 +9,7 @@ const Price = (field: string) =>
   z.coerce
     .number()
     .refine(
-      (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
+      (value) => /^\d+\.\d{2}$/.test(value.toFixed(2)),
       `${field} must have exactly two decimal places (e.g., 49.99)`
     )
 
@@ -122,7 +121,9 @@ export const OrderInputSchema = z.object({
   itemsPrice: Price('Items price'),
   shippingPrice: Price('Shipping price'),
   taxPrice: Price('Tax price'),
-  totalPrice: Price('Total price'),
+  totalPrice: z.coerce
+    .number()
+    .refine((value) => /^\d+\.\d{2}$/.test(value.toFixed(2))),
   expectedDeliveryDate: z
     .date()
     .refine(
@@ -143,7 +144,7 @@ export const CartSchema = z.object({
   itemsPrice: z.number(),
   taxPrice: z.optional(z.number()),
   shippingPrice: z.optional(z.number()),
-  totalPrice: z.number(),
+  totalPrice: Price('Total price'),
   paymentMethod: z.optional(z.string()),
   shippingAddress: z.optional(ShippingAddressSchema),
   deliveryDateIndex: z.optional(z.number()),

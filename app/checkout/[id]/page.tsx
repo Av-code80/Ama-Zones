@@ -9,6 +9,7 @@ export const metadata = {
   title: 'Payment',
 }
 
+export const dynamic = 'force-dynamic'
 const CheckoutPaymentPage = async (props: {
   params: Promise<{
     id: string

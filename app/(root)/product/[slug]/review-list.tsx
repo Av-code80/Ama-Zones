@@ -164,7 +164,6 @@ export default function ReviewList({
                 >
                   Write a customer review
                 </Button>
-
                 <DialogContent className='sm:max-w-[425px]'>
                   <Form {...form}>
                     <form method='post' onSubmit={form.handleSubmit(onSubmit)}>
@@ -189,7 +188,6 @@ export default function ReviewList({
                               </FormItem>
                             )}
                           />
-
                           <FormField
                             control={form.control}
                             name='comment'
@@ -239,14 +237,12 @@ export default function ReviewList({
                                     )}
                                   </SelectContent>
                                 </Select>
-
                                 <FormMessage />
                               </FormItem>
                             )}
                           />
                         </div>
                       </div>
-
                       <DialogFooter>
                         <Button
                           type='submit'

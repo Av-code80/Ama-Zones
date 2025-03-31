@@ -109,3 +109,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.flex-between {
+  @apply flex justify-between items-center;
+}

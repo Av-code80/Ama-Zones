@@ -127,6 +127,7 @@ const useCartStore = create(
           },
         })
       },
+
       setShippingAddress: async (shippingAddress: ShippingAddress) => {
         const { items } = get().cart
         set({
@@ -140,6 +141,7 @@ const useCartStore = create(
           },
         })
       },
+
       setPaymentMethod: (paymentMethod: string) => {
         set({
           cart: {
@@ -148,6 +150,7 @@ const useCartStore = create(
           },
         })
       },
+
       setDeliveryDateIndex: async (index: number) => {
         const { items, shippingAddress } = get().cart
 
@@ -162,6 +165,7 @@ const useCartStore = create(
           },
         })
       },
+
       clearCart: () => {
         set({
           cart: {

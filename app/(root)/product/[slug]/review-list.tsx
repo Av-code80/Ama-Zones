@@ -304,7 +304,6 @@ export default function ReviewList({
                 See more reviews
               </Button>
             )}
-
             {page < totalPages && loadingReviews && 'Loading'}
           </div>
         </div>

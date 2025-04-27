@@ -81,7 +81,6 @@ export default function ReviewList({
       toast.error('Error in fetching reviews')
     }
   }
-
   const loadMoreReviews = async () => {
     if (totalPages !== 0 && page > totalPages) return
     setLoadingReviews(true)

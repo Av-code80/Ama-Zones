@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     try {
       await sendPurchaseReceipt({ order })
     } catch (err) {
-      console.log('email error', err)
+      console.log('There is an email error', err)
     }
     return NextResponse.json({
       message: 'updateOrderToPaid was successful',
